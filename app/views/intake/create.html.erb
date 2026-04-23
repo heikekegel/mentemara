@@ -1,0 +1,28 @@
+<div style="font-family: Arial, sans-serif; max-width: 700px; margin: 60px auto;">
+  <h1 style="font-size: 36px; margin-bottom: 20px;">Thank You</h1>
+
+  <p style="font-size: 18px; color: #555; margin-bottom: 30px;">
+    Your intake has been submitted successfully.
+  </p>
+
+  <div style="background: #f7f7f7; padding: 24px; border-radius: 8px;">
+    <p><strong>Full Name:</strong> <%= @intake.full_name %></p>
+    <p><strong>Email:</strong> <%= @intake.email %></p>
+    <p><strong>Phone:</strong> <%= @intake.phone %></p>
+    <p><strong>Reason for Visit:</strong> <%= @intake.reason_for_visit %></p>
+    <p><strong>Urgency:</strong> <%= @intake.urgency %></p>
+    <p><strong>Insurance Provider:</strong> <%= @intake.insurance_provider %></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <%= link_to "Return Home", "/", style: "
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #2d7ff9;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    " %>
+  </div>
+</div>

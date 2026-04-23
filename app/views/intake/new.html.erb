@@ -1,0 +1,59 @@
+<div style="font-family: Arial, sans-serif; max-width: 700px; margin: 60px auto;">
+  <h1 style="font-size: 36px; margin-bottom: 10px;">Behavioral Health Intake</h1>
+  <p style="color: #555; margin-bottom: 30px;">
+    Please complete the intake form below so we can better understand your needs.
+  </p>
+
+  <% if @intake&.errors&.any? %>
+    <div style="background: #ffe5e5; color: #900; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+      <h3 style="margin-top: 0;">Please fix the following errors:</h3>
+      <ul style="margin-bottom: 0;">
+        <% @intake.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @intake, url: "/intake", method: :post, local: true, data: { turbo: false } do |form| %>
+    <div style="margin-bottom: 20px;">
+      <%= form.label :full_name, "Full Name", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.text_field :full_name, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :email, "Email", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.email_field :email, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :phone, "Phone Number", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.telephone_field :phone, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :reason_for_visit, "Reason for Visit", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.text_area :reason_for_visit, rows: 4, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :urgency, "Urgency Level", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.select :urgency, ["Routine", "Soon", "Urgent"], {}, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <%= form.label :insurance_provider, "Insurance Provider (Optional)", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.text_field :insurance_provider, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+    </div>
+
+    <%= form.submit "Submit Intake", style: "
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #2d7ff9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    " %>
+  <% end %>
+</div>
