@@ -1,4 +1,4 @@
-class IntakeController < ApplicationController
+class IntakesController < ApplicationController
 
   def index
     @intakes = Intake.order(created_at: :desc)
@@ -12,10 +12,14 @@ class IntakeController < ApplicationController
     @intake = Intake.new(intake_params)
 
     if @intake.save
-      render :create
+      redirect_to @intake
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+   @intake = Intake.find(params[:id])
   end
 
   private

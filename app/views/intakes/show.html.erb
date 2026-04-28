@@ -1,0 +1,25 @@
+<div style="font-family: Arial, sans-serif; max-width: 700px; margin: 60px auto;">
+  <h1 style="font-size: 36px; margin-bottom: 20px;">Intake Details</h1>
+
+  <div style="background: #f7f7f7; padding: 24px; border-radius: 8px;">
+    <p><strong>Full Name:</strong> <%= @intake.full_name %></p>
+    <p><strong>Email:</strong> <%= @intake.email %></p>
+    <p><strong>Phone:</strong> <%= @intake.phone %></p>
+    <p><strong>Reason for Visit:</strong> <%= @intake.reason_for_visit %></p>
+    <p><strong>Urgency:</strong> <%= @intake.urgency %></p>
+    <p><strong>Insurance Provider:</strong> <%= @intake.insurance_provider %></p>
+    <p><strong>Submitted At:</strong> <%= @intake.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <%= link_to "Back to All Intakes", intakes_path, style: "
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #2d7ff9;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    " %>
+  </div>
+</div>

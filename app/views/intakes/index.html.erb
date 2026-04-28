@@ -19,7 +19,7 @@
       <tbody>
         <% @intakes.each do |intake| %>
           <tr>
-            <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.full_name %></td>
+            <td style="padding: 12px; border: 1px solid #ddd;"><%= link_to intake.full_name, intake_path(intake) %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.email %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.phone %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.urgency %></td>

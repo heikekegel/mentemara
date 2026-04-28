@@ -15,7 +15,7 @@
     </div>
   <% end %>
 
-  <%= form_with model: @intake, url: "/intake", method: :post, local: true, data: { turbo: false } do |form| %>
+  <%= form_with model: @intake, local: true, data: { turbo: false } do |form| %>
     <div style="margin-bottom: 20px;">
       <%= form.label :full_name, "Full Name", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
       <%= form.text_field :full_name, style: "width: 100%; padding: 10px; font-size: 16px;" %>
