@@ -14,17 +14,44 @@
           <th style="text-align: left; padding: 12px; border: 1px solid #ddd;">Urgency</th>
           <th style="text-align: left; padding: 12px; border: 1px solid #ddd;">Reason for Visit</th>
           <th style="text-align: left; padding: 12px; border: 1px solid #ddd;">Submitted At</th>
+          <th style="padding: 12px; border: 1px solid #ddd;">Actions</th>  
         </tr>
       </thead>
       <tbody>
         <% @intakes.each do |intake| %>
-          <tr>
+          <tr id="intake-<%= intake.id %>">
             <td style="padding: 12px; border: 1px solid #ddd;"><%= link_to intake.full_name, intake_path(intake) %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.email %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.phone %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.urgency %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.reason_for_visit %></td>
-            <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.created_at.strftime("%Y-%m-%d %H:%M") %></td>        
+            <td style="padding: 12px; border: 1px solid #ddd;">
+
+              <%= link_to "Edit", edit_intake_path(intake), style: "
+                display: inline-block;
+                padding: 6px 12px;
+                background-color: blue;
+                color: white;
+                border-radius: 4px;
+                text-decoration: none;
+                font-size: 14px;
+                margin-bottom: 4px;
+              " %>
+
+              <a href="#" onclick="deleteIntake(<%= intake.id %>); return false;"
+                style="
+                  display: inline-block;
+                  padding: 6px 12px;
+                  background-color: #e74c3c;
+                  color: white;
+                  border-radius: 4px;
+                  text-decoration: none;
+                  font-size: 14px;
+                ">
+                Delete
+              </a>
+            </td>
           </tr>
         <% end %>
       </tbody>

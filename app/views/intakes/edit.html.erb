@@ -1,0 +1,32 @@
+<h1>Edit Intake</h1>
+
+<%= form_with model: @intake do |form| %>
+
+  <div>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div>
+    <%= form.label :reason_for_visit %>
+    <%= form.text_area :reason_for_visit %>
+  </div>
+
+  <div>
+    <%= form.label :urgency %>
+    <%= form.select :urgency, ["Routine", "Soon", "Urgent"] %>
+  </div>
+
+  <%= form.submit "Update Intake" %>
+
+<% end %>

@@ -1,9 +1,8 @@
 class IntakesController < ApplicationController
-
   def index
     @intakes = Intake.order(created_at: :desc)
   end
-  
+
   def new
     @intake = Intake.new
   end
@@ -19,7 +18,31 @@ class IntakesController < ApplicationController
   end
 
   def show
-   @intake = Intake.find(params[:id])
+    @intake = Intake.find(params[:id])
+  end
+
+  def edit
+    @intake = Intake.find(params[:id])
+  end
+
+  def update
+    @intake = Intake.find(params[:id])
+
+    if @intake.update(intake_params)
+      redirect_to @intake
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @intake = Intake.find(params[:id])
+    @intake.destroy
+
+    respond_to do |format|
+      format.html { redirect_to intakes_path }
+      format.json { render json: { success: true } }
+    end
   end
 
   private
