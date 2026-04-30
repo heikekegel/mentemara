@@ -19,65 +19,81 @@ It reflects the purpose of the application: supporting mental well-being by prov
 
 ## 🧱 Tech Stack
 
-- **Ruby on Rails 8**
-- **SQLite** (development & test database)
-- **Hotwire**
-  - **Turbo** – faster navigation without full page reloads
-  - **Stimulus** – lightweight JavaScript for interactivity
-- **JavaScript (Fetch API)** – used for async delete requests
-- **RSpec** – testing framework
-- **RuboCop** – code quality and linting
-- **Brakeman** – security vulnerability scanner
-- **bundler-audit** – dependency vulnerability checker
+- Ruby on Rails 8
+- SQLite
+- Hotwire (Turbo + Stimulus)
+- JavaScript Fetch API
+- RSpec
+- RuboCop
+- Brakeman
+- bundler-audit
 
 ---
 
-## 🧠 Key Concepts Used
+## 🛠 Setup & Installation
 
-### CRUD Operations
+### Clone the repo
 
-CRUD stands for:
-- **Create** – add a new intake
-- **Read** – view existing intakes
-- **Update** – edit an intake
-- **Delete** – remove an intake
+git clone https://github.com/heikekegel/mentemara.git
+cd mentemara
 
----
+### Install dependencies
 
-### RESTful Routes
+bundle install
 
-Rails uses RESTful routing to map HTTP requests to controller actions:
+### Setup database
 
-| HTTP Verb | Route              | Action   |
-|----------|--------------------|----------|
-| GET      | /intakes           | index    |
-| GET      | /intakes/new       | new      |
-| POST     | /intakes           | create   |
-| GET      | /intakes/:id       | show     |
-| GET      | /intakes/:id/edit  | edit     |
-| PATCH    | /intakes/:id       | update   |
-| DELETE   | /intakes/:id       | destroy  |
+rails db:prepare
+
+### Run server
+
+rails server
+
+Open:
+http://localhost:3000
 
 ---
 
-### MVC Architecture
+## 🧪 Run Tests
 
-- **Model (ActiveRecord)**  
-  Handles data and validations (e.g., Intake model)
-
-- **View (ERB templates)**  
-  Displays data to the user
-
-- **Controller**  
-  Processes requests and coordinates between model and view
+bundle exec rspec
 
 ---
 
-### ActiveRecord
+## 🔍 Code Quality & Security
 
-ActiveRecord is Rails’ ORM (Object Relational Mapper), which allows interaction with the database using Ruby objects instead of raw SQL.
+RuboCop:
+bundle exec rubocop
 
-Example:
+Brakeman:
+bundle exec brakeman
 
-```ruby
-Intake.create!(valid_attributes)
+Bundler Audit:
+bundle exec bundler-audit check --update
+
+---
+
+## 🧠 Concepts
+
+CRUD = Create, Read, Update, Delete
+
+RESTful Routes map HTTP requests to controller actions.
+
+MVC:
+- Model → data & validation
+- View → UI
+- Controller → logic
+
+ActiveRecord lets you interact with DB via Ruby.
+
+---
+
+## 🔁 Delete Flow
+
+Click Delete → Stimulus → fetch DELETE → Rails destroy → JSON → row removed
+
+---
+
+## 👩‍💻 Author
+
+Heike Kegel
