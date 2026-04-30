@@ -466,19 +466,6 @@ This is useful for inspecting:
 
 ---
 
-## 📌 Interview Talking Points
-
-A natural way to describe this project:
-
-```text
-I built a Rails intake-management app with full CRUD functionality.
-I used RESTful routes and ActiveRecord for the core backend flow.
-For the frontend, I used Turbo for standard Rails interactions and Stimulus with fetch for a dynamic delete action that removes a row without a full page reload.
-I also added model and request specs with RSpec, and I integrated RuboCop, Brakeman, and bundler-audit for code quality and security checks.
-```
-
----
-
 ## 👩‍💻 Author
 
 Heike Kegel
