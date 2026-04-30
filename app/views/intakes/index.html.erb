@@ -1,11 +1,11 @@
-<div style="font-family: Arial, sans-serif; max-width: 1000px; margin: 60px auto;">
+<div class="container">
   <h1 style="font-size: 36px; margin-bottom: 10px;">Submitted Intakes</h1>
   <p style="color: #555; margin-bottom: 30px;">
     Review all behavioral health intake submissions.
   </p>
 
   <% if @intakes.any? %>
-    <table style="width: 100%; border-collapse: collapse; background: white;">
+    <table class="table">
       <thead>
         <tr style="background: #f2f2f2;">
           <th style="text-align: left; padding: 12px; border: 1px solid #ddd;">Name</th>
@@ -19,39 +19,23 @@
       </thead>
       <tbody>
         <% @intakes.each do |intake| %>
-          <tr id="intake-<%= intake.id %>">
+          <tr id="intake-<%= intake.id %>" data-controller="intake">
             <td style="padding: 12px; border: 1px solid #ddd;"><%= link_to intake.full_name, intake_path(intake) %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.email %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.phone %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.urgency %></td>
             <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.reason_for_visit %></td>
-            <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.created_at.strftime("%Y-%m-%d %H:%M") %></td>        
-            <td style="padding: 12px; border: 1px solid #ddd;">
-
-              <%= link_to "Edit", edit_intake_path(intake), style: "
-                display: inline-block;
-                padding: 6px 12px;
-                background-color: blue;
-                color: white;
-                border-radius: 4px;
-                text-decoration: none;
-                font-size: 14px;
-                margin-bottom: 4px;
-              " %>
-
-              <a href="#" onclick="deleteIntake(<%= intake.id %>); return false;"
-                style="
-                  display: inline-block;
-                  padding: 6px 12px;
-                  background-color: #e74c3c;
-                  color: white;
-                  border-radius: 4px;
-                  text-decoration: none;
-                  font-size: 14px;
-                ">
-                Delete
-              </a>
-            </td>
+            <td style="padding: 12px; border: 1px solid #ddd;"><%= intake.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td>
+              <%= link_to "Edit", edit_intake_path(intake), class: "btn btn-edit" %>
+              <br><br>
+              <button
+                class="btn btn-delete"
+                data-action="click->intake#delete"
+                data-intake-id="<%= intake.id %>">
+                    Delete
+                  </button>           
+            </td>                
           </tr>
         <% end %>
       </tbody>

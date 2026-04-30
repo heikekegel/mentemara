@@ -1,0 +1,42 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  background: #f2f2f2;
+  text-align: left;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: blue;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.container {
+  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: 60px auto;
+}
