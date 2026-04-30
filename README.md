@@ -1,8 +1,8 @@
-# Mentemara
+# MenteMara
 
 Mentemara is a Ruby on Rails application for managing behavioral health intake submissions.
 
-The name **Mentemara** is inspired by the Spanish phrase *“mente maravillosa”*, meaning *“marvelous mind.”*  
+The name **MenteMara** is inspired by the Spanish phrase *“mente maravillosa”*, meaning *“marvelous mind.”*  
 It reflects the purpose of the application: supporting mental well-being by providing a simple, structured way to capture and manage intake information with care and clarity.
 
 ---
