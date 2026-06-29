@@ -7,15 +7,25 @@ class IntakesController < ApplicationController
     @intake = Intake.new
   end
 
-  def create
-    @intake = Intake.new(intake_params)
+def create
+  @patient = Patient.find_or_initialize_by(email: intake_params[:email])
+
+  @patient.full_name = intake_params[:full_name]
+  @patient.phone_number = intake_params[:phone]
+
+  if @patient.save
+    @intake = @patient.intakes.build(intake_params)
 
     if @intake.save
       redirect_to @intake
     else
       render :new, status: :unprocessable_entity
     end
+  else
+    @intake = Intake.new(intake_params)
+    render :new, status: :unprocessable_entity
   end
+end
 
   def show
     @intake = Intake.find(params[:id])
