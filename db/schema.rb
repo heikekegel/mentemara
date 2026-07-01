@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_28_165445) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_01_194806) do
   create_table "intakes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email"
     t.string "full_name"
     t.string "insurance_provider"
-    t.integer "patient_id"
+    t.integer "patient_id", null: false
     t.string "phone"
     t.text "reason_for_visit"
     t.datetime "updated_at", null: false
