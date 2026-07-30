@@ -11,6 +11,13 @@ RSpec.describe "Intakes", type: :request do
     }
   end
 
+  let(:patient) do
+    Patient.create!(
+      full_name: "Test User",
+      email: "test@example.com"
+    )
+  end
+
   describe "GET /intakes" do
     it "returns a successful response" do
       get intakes_path
@@ -35,7 +42,7 @@ RSpec.describe "Intakes", type: :request do
 
   describe "DELETE /intakes/:id" do
     it "deletes an intake" do
-      intake = Intake.create!(valid_attributes)
+      intake = Intake.create!(valid_attributes.merge(patient: patient))
 
       expect {
         delete intake_path(intake), headers: { "ACCEPT" => "application/json" }
@@ -43,7 +50,7 @@ RSpec.describe "Intakes", type: :request do
     end
 
     it "returns a successful JSON response" do
-      intake = Intake.create!(valid_attributes)
+      intake = Intake.create!(valid_attributes.merge(patient: patient))
 
       delete intake_path(intake), headers: { "ACCEPT" => "application/json" }
 
