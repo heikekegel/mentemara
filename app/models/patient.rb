@@ -1,5 +1,6 @@
 class Patient < ApplicationRecord
   has_many :intakes
+  has_many :contact_methods
 
   before_validation :normalize_email
 
