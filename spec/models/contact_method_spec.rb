@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ContactMethod, type: :model do
   it "is invalid with an unsupported kind" do
-    patient = Patient.create!(
-      full_name: "Test Patient",
-      email: "test@example.com"
-    )
+    patient = create(:patient)
 
     contact_method = ContactMethod.new(
       patient: patient,
@@ -17,11 +14,8 @@ RSpec.describe ContactMethod, type: :model do
     expect(contact_method).not_to be_valid
   end
 
-    it "is invalid when effective_to is before effective_from" do
-    patient = Patient.create!(
-      full_name: "Test Patient",
-      email: "dates@example.com"
-    )
+  it "is invalid when effective_to is before effective_from" do
+    patient = create(:patient)
 
     contact_method = ContactMethod.new(
       patient: patient,
@@ -37,10 +31,7 @@ RSpec.describe ContactMethod, type: :model do
   end
 
   it "is invalid without a value" do
-    patient = Patient.create!(
-      full_name: "Test Patient",
-      email: "missing-value@example.com"
-    )
+    patient = create(:patient)
 
     contact_method = ContactMethod.new(
       patient: patient,
@@ -53,10 +44,7 @@ RSpec.describe ContactMethod, type: :model do
   end
 
   it "is invalid without an effective_from date" do
-    patient = Patient.create!(
-      full_name: "Test Patient",
-      email: "missing-date@example.com"
-    )
+    patient = create(:patient)
 
     contact_method = ContactMethod.new(
       patient: patient,
@@ -69,10 +57,7 @@ RSpec.describe ContactMethod, type: :model do
   end
 
   it "does not allow two current contact methods of the same kind for one patient" do
-    patient = Patient.create!(
-      full_name: "Test Patient",
-      email: "unique-current@example.com"
-    )
+    patient = create(:patient)
 
     ContactMethod.create!(
       patient: patient,
@@ -92,10 +77,7 @@ RSpec.describe ContactMethod, type: :model do
   end
 
   it "is valid with supported attributes" do
-    patient = Patient.create!(
-      full_name: "Test Patient",
-      email: "valid-contact@example.com"
-    )
+    patient = create(:patient)
 
     contact_method = ContactMethod.new(
       patient: patient,

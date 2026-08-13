@@ -6,7 +6,7 @@ gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 
-# Use sqlite3 as the database for Active Record
+# Use PostgreSQL as the database for Active Record
 gem "pg", "~> 1.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -69,6 +69,8 @@ group :development, :test do
 
   # RSpec testing framework
   gem "rspec-rails"
+  # Add Factory bot for testing
+  gem "factory_bot_rails"
 end
 
 group :development do
