@@ -7,10 +7,10 @@ RSpec.describe Intake, type: :model do
       email: "test@example.com",
       phone: "2162019511",
       reason_for_visit: "Anxiety",
-      urgency: "Routine"
+      urgency: "Routine",
+      date_of_birth: Date.new(1990, 1, 1)
     }
   end
-
   describe "validations" do
     it "is valid with valid attributes" do
       intake = Intake.new(valid_attributes)
@@ -22,6 +22,13 @@ RSpec.describe Intake, type: :model do
 
       expect(intake).not_to be_valid
       expect(intake.errors[:full_name]).to include("can't be blank")
+    end
+
+    it "is invalid without a date of birth" do
+      intake = Intake.new(valid_attributes.merge(date_of_birth: nil))
+
+      expect(intake).not_to be_valid
+      expect(intake.errors[:date_of_birth]).to include("can't be blank")
     end
 
     it "is invalid without an email" do

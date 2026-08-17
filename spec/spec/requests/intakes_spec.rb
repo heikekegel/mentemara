@@ -7,15 +7,13 @@ RSpec.describe "Intakes", type: :request do
       email: "test@example.com",
       phone: "2162019511",
       reason_for_visit: "Anxiety",
-      urgency: "Routine"
+      urgency: "Routine",
+      date_of_birth: "1935-08-09"
     }
   end
 
   let(:patient) do
-    Patient.create!(
-      full_name: "Test User",
-      email: "test@example.com"
-    )
+    create(:patient, email: "test@example.com")
   end
 
   describe "GET /intakes" do

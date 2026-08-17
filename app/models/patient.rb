@@ -3,6 +3,7 @@ class Patient < ApplicationRecord
   has_many :contact_methods
 
   before_validation :normalize_email
+  validates :date_of_birth, presence: true
 
   private
 

@@ -12,6 +12,7 @@ def create
 
   @patient.full_name = intake_params[:full_name]
   @patient.phone_number = intake_params[:phone]
+  @patient.date_of_birth = intake_params[:date_of_birth]
 
   if @patient.save
     @intake = @patient.intakes.build(intake_params)
@@ -64,7 +65,9 @@ end
       :phone,
       :reason_for_visit,
       :urgency,
-      :insurance_provider
+      :insurance_provider,
+      :returning_patient,
+      :date_of_birth
     )
   end
 end

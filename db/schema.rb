@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_13_213550) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_17_201344) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,6 +28,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_13_213550) do
 
   create_table "intakes", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.date "date_of_birth", null: false
     t.string "email"
     t.string "full_name"
     t.string "insurance_provider"
@@ -42,6 +43,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_13_213550) do
 
   create_table "patients", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.date "date_of_birth", null: false
     t.string "email"
     t.string "full_name"
     t.string "phone_number"
