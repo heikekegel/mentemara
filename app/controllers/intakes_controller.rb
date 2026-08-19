@@ -7,42 +7,26 @@ class IntakesController < ApplicationController
     @intake = Intake.new
   end
 
-def create
-  @patient = Patient.find_or_initialize_by(email: intake_params[:email])
+  def create
+    attributes = normalized_intake_params
 
-  @patient.full_name = intake_params[:full_name]
-  @patient.phone_number = intake_params[:phone]
-  @patient.date_of_birth = intake_params[:date_of_birth]
+    @patient = Patient.find_or_initialize_by(email: attributes["email"])
 
-  if @patient.save
-    @intake = @patient.intakes.build(intake_params)
+    @patient.full_name = attributes["full_name"]
+    @patient.phone_number = attributes["phone_number"]
+    @patient.date_of_birth = attributes["date_of_birth"]
 
-    if @intake.save
-      redirect_to @intake
+    if @patient.save
+      @intake = @patient.intakes.build(attributes)
+
+      if @intake.save
+        redirect_to @intake
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
+      @intake = Intake.new(attributes)
       render :new, status: :unprocessable_entity
-    end
-  else
-    @intake = Intake.new(intake_params)
-    render :new, status: :unprocessable_entity
-  end
-end
-
-  def show
-    @intake = Intake.find(params[:id])
-  end
-
-  def edit
-    @intake = Intake.find(params[:id])
-  end
-
-  def update
-    @intake = Intake.find(params[:id])
-
-    if @intake.update(intake_params)
-      redirect_to @intake
-    else
-      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -62,7 +46,7 @@ end
     params.require(:intake).permit(
       :full_name,
       :email,
-      :phone,
+      :phone_number,
       :reason_for_visit,
       :urgency,
       :insurance_provider,
@@ -70,4 +54,15 @@ end
       :date_of_birth
     )
   end
+
+  def normalized_intake_params
+    attributes = intake_params.to_h
+
+    if attributes["returning_patient"] == "unknown"
+      attributes["returning_patient"] = nil
+    end
+
+    attributes
+  end
+
 end

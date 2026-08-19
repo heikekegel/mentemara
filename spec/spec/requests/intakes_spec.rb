@@ -5,7 +5,7 @@ RSpec.describe "Intakes", type: :request do
     {
       full_name: "Test User",
       email: "test@example.com",
-      phone: "2162019511",
+      phone_number: "2162019511",
       reason_for_visit: "Anxiety",
       urgency: "Routine",
       date_of_birth: "1935-08-09"

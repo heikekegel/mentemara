@@ -22,13 +22,43 @@
     </div>
 
     <div style="margin-bottom: 20px;">
+      <%= form.label :date_of_birth, "Date of Birth", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.date_field :date_of_birth, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+    </div>
+
+<div style="margin-bottom: 20px;">
+  <p style="font-weight: bold; margin-bottom: 8px;">
+    Are you a returning patient?
+  </p>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.radio_button :returning_patient, false,
+          id: "returning_patient_no",
+          required: true %>
+    <%= form.label :returning_patient_no, "No, this is my first visit" %>
+  </div>
+
+  <div style="margin-bottom: 8px;">
+    <%= form.radio_button :returning_patient, true,
+          id: "returning_patient_yes" %>
+    <%= form.label :returning_patient_yes, "Yes, I have been here before" %>
+  </div>
+
+  <div>
+    <%= form.radio_button :returning_patient, "unknown",
+          id: "returning_patient_unknown" %>
+    <%= form.label :returning_patient_unknown, "I'm not sure" %>
+  </div>
+</div>
+
+    <div style="margin-bottom: 20px;">
       <%= form.label :email, "Email", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
       <%= form.email_field :email, style: "width: 100%; padding: 10px; font-size: 16px;" %>
     </div>
 
     <div style="margin-bottom: 20px;">
-      <%= form.label :phone, "Phone Number", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
-      <%= form.telephone_field :phone, style: "width: 100%; padding: 10px; font-size: 16px;" %>
+      <%= form.label :phone_number, "Phone Number", style: "display: block; font-weight: bold; margin-bottom: 8px;" %>
+      <%= form.telephone_field :phone_number, style: "width: 100%; padding: 10px; font-size: 16px;" %>
     </div>
 
     <div style="margin-bottom: 20px;">

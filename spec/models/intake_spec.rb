@@ -5,7 +5,7 @@ RSpec.describe Intake, type: :model do
     {
       full_name: "Test User",
       email: "test@example.com",
-      phone: "2162019511",
+      phone_number: "2162019511",
       reason_for_visit: "Anxiety",
       urgency: "Routine",
       date_of_birth: Date.new(1990, 1, 1)
@@ -59,21 +59,21 @@ RSpec.describe Intake, type: :model do
     end
 
     it "is invalid with a non-numeric phone number" do
-      intake = Intake.new(valid_attributes.merge(phone: "abc1236789"))
+      intake = Intake.new(valid_attributes.merge(phone_number: "abc1236789"))
 
       expect(intake).not_to be_valid
-      expect(intake.errors[:phone]).to include("must be a valid phone number")
+      expect(intake.errors[:phone_number]).to include("must be a valid phone number")
     end
 
     it "is invalid with a phone number that is too short" do
-      intake = Intake.new(valid_attributes.merge(phone: "123"))
+      intake = Intake.new(valid_attributes.merge(phone_number: "123"))
 
       expect(intake).not_to be_valid
-      expect(intake.errors[:phone]).to include("must be a valid phone number")
+      expect(intake.errors[:phone_number]).to include("must be a valid phone number")
     end
 
     it "is valid with a 15-digit phone number" do
-      intake = Intake.new(valid_attributes.merge(phone: "123456789012345"))
+      intake = Intake.new(valid_attributes.merge(phone_number: "123456789012345"))
 
       expect(intake).to be_valid
     end
